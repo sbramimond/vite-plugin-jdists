@@ -1,0 +1,25 @@
+{
+    "name": "vite-plugin-jdists",
+    "version": "1.0.0",
+    "description": "vite plugin jdists",
+    "author": "neverland",
+    "repository": "",
+    "main": "dist/index.cjs.js",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite build --watch"
+    },
+    "dependencies": {
+        "@rollup/pluginutils": "^5.3.0",
+        "jdists": "^2.2.4",
+        "vite": "8.0.0-beta.8"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sbramimond/vite-plugin-jdists/issues"
+    },
+    "homepage": "https://github.com/sbramimond/vite-plugin-jdists#readme"
+}
+
+
+
