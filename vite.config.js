@@ -8,7 +8,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'vitePluginJdists',
       fileName: (format) => `index.${format}.js`,
-      formats: ['es']
+      formats: ['es','cjs']
     },
     rollupOptions: {
       external: [
