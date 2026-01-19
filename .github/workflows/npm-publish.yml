@@ -43,6 +43,6 @@ jobs:
           cache: 'pnpm'  # 发布任务也需要缓存
 
       - run: pnpm install
-      - run: pnpm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
