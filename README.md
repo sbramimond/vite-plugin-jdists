@@ -1,6 +1,7 @@
 # vite-plugin-jdists
 
 ## Introduction
+
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-jdists.svg?style=flat-square)](https://npmjs.com/package/vite-plugin-jdists)
 
 A vite plugin for [jdists](https://github.com/zswang/jdists).
