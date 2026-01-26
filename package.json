@@ -1,6 +1,6 @@
 {
     "name": "vite-plugin-jdists",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "vite plugin jdists",
     "author": "neverland",
     "repository": "",
@@ -22,6 +22,3 @@
     },
     "homepage": "https://github.com/sbramimond/vite-plugin-jdists#readme"
 }
-
-
-
