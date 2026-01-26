@@ -11,22 +11,61 @@ A vite plugin for [jdists](https://github.com/zswang/jdists).
 
 ``` javascript
 
-// 案例1：只在开发环境起作用的代码， 在生产环境会被自动删除
+viteJdistsPlugin({
+    include?: ['**/*.tsx', '**/*.ts'],
+    exclude?: ['node_modules/**', 'dist/**'],
+    /**
+     * dev 模式时删除 /* <prod> */ ${代码} /* </prod> */
+     * prod 模式时删除 /* <dev> */ ${代码} /* </dev> */
+    */
+    remove: process.env.NODE_ENV === 'development' ? ['prod'] : ['dev'],
+    trigger?: ['release']
+}) as PluginOption
 
+```
+
+INPUT:
+
+### 场景1：只在开发环境起作用的代码， 在生产环境会被自动删除
+
+``` javascript
 /* <dev> */
     let password = '123456';
     console.log('dev');
 /* </dev> */
-
-// 只在生产环境起作用的代码， 在开发环境会被自动删除
 
 /* <prod> */
     let password = '777777';
     console.log('prod');
 /* </prod> */
 
+```
 
-// 案例1：开发环境运行时使用的代码
+OUTPUT:
+
+``` javascript
+// process.env.NODE_ENV === 'development'
+
+/* <dev> */
+    let password = '123456';
+    console.log('dev');
+/* </dev> */
+
+```
+
+``` javascript
+// process.env.NODE_ENV === 'production'
+
+/* <prod> */
+    let password = '777777';
+    console.log('prod');
+/* </prod> */
+
+```
+
+### 场景2：开发环境运行时使用的代码
+
+``` javascript
 
 let password = '123456';
 
@@ -37,8 +76,26 @@ let password = '123456';
 
 ```
 
-这样做比判断process.env.NODE_ENV更方便，也更安全。build时，jdists会自动删除所有`<dev>`代码，只保留一份代码在运行时不会暴露任何给用户。
+OUTPUT:
 
+``` javascript
+// process.env.NODE_ENV === 'development'
+
+let password = '123456';
+
+/* <dev> */
+    let password = '777777';
+    console.log('prod');
+/* </dev> */
+```
+
+``` javascript
+// process.env.NODE_ENV === 'production'
+let password = '123456';
+
+```
+
+ 这样做比判断process.env.NODE_ENV更方便，也更安全。build时jdists会自动删除所有`<dev>`代码，只保留一份代码在运行时不会暴露任何给用户。
 
 ## Install
 
@@ -58,7 +115,7 @@ export default defineConfig({
         viteJdistsPlugin({
             include: ['**/*.tsx', '**/*.ts'], // 修正路径模式
             exclude: ['node_modules/**', 'dist/**'],
-            remove: ['prod'],
+            remove: process.env.NODE_ENV === 'development' ? ['prod'] : ['dev'],
             trigger: ['release']
         }) as PluginOption
     ]
