@@ -104,8 +104,14 @@ let password = '123456';
 
 npm i -D vite-plugin-jdists
 
+```
+
 ## Usage
-```js vite.config.js
+
+```javascript
+
+// vite.config.js
+
 import { defineConfig, type PluginOption } from 'vite';
 
 import viteJdistsPlugin from 'vite-plugin-jdists'
