@@ -1,11 +1,19 @@
 {
     "name": "vite-plugin-jdists",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "vite plugin jdists",
     "author": "neverland",
     "repository": "",
     "types": "dist/index.d.ts",
     "main": "dist/index.cjs.js",
+    "module": "dist/index.es.js",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.cjs.js"
+        }
+    },
     "scripts": {
         "build": "vite build",
         "dev": "vite build --watch",
