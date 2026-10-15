@@ -1,7 +1,8 @@
-import jdists from "jdists";
-import { createFilter } from "@rollup/pluginutils";
-function viteJdistsPlugin(n = {}) {
-	let { include: r = /\.(js|ts|jsx|tsx|vue|svelte|astro|md)$/, exclude: i = [], remove: a = ["debug", "test"], trigger: o = ["release"], config: s, ...c } = n, l = createFilter(r, i), u = (e) => Array.isArray(e) ? e.join(",") : e;
+import e from "jdists";
+import { createFilter as t } from "@rollup/pluginutils";
+//#region src/index.js
+function n(n = {}) {
+	let { include: r = /\.(js|ts|jsx|tsx|vue|svelte|astro|md)$/, exclude: i = [], remove: a = ["debug", "test"], trigger: o = ["release"], config: s, ...c } = n, l = t(r, i), u = (e) => Array.isArray(e) ? e.join(",") : e;
 	return {
 		name: "vite-plugin-jdists",
 		enforce: "pre",
@@ -14,7 +15,7 @@ function viteJdistsPlugin(n = {}) {
 					...c
 				};
 				return a && (r.remove = u(a)), o && (r.trigger = u(o)), s && (r.config = s), {
-					code: jdists.build(t, r),
+					code: e.build(t, r),
 					map: null
 				};
 			} catch {
@@ -30,4 +31,5 @@ function viteJdistsPlugin(n = {}) {
 		}
 	};
 }
-export { viteJdistsPlugin as default };
+//#endregion
+export { n as default };
